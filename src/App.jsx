@@ -70,50 +70,66 @@ body{background:#0B0E19;color:#E2E5F0;font-family:'DM Sans',system-ui,sans-serif
 const PERSONAS_DEFAULT = [
   {
     id:"p1",name:"Właściciel firmy",type:"B2B",difficulty:3,tag:"Decydent cenowy",
-    neg:{model:"Transit Custom L1 2.0 EcoBlue 136KM",price:"168 000 zł netto",demand:"Żąda 155 000 zł. Mówi że Fiat Ducato kosztuje 142 000 zł.",context:"Firma hydrauliczna, kupuje drugie auto, zna rynek, rozmawiał z kilkoma dealerami.",goal:"Obronić cenę powyżej 161 000 zł. Nie schodzić bez warunku. Zbadać czy Fiat to blef."},
-    clos:{model:"Transit Custom L1 2.0 EcoBlue 136KM",price:"168 000 zł - ustalona",demand:"Cena ustalona, ale klient mówi 'zadzwonię w przyszłym tygodniu i finalizujemy'. Wcześniej pytał o termin dostawy.",goal:"Zamknąć dziś. Wyciągnąć co blokuje. Zaproponować zaliczkę.",context:""},
+    neg:{model:"Transit Custom L1 2.0 EcoBlue 136KM",price:"168 000 zł netto",demand:"Żąda 155 000 zł. Mówi że Fiat Ducato kosztuje 142 000 zł.",context:"Firma hydrauliczna, kupuje drugie auto, zna rynek, rozmawiał z kilkoma dealerami.",goal:"Obronić cenę powyżej 161 000 zł. Nie schodzić bez warunku. Zbadać czy Fiat to blef.",
+      brief:"Jesteś po 20-minutowej rozmowie rozpoznawczej. Wiesz że: firma hydrauliczna 8 osób, właściciel Marek, kupuje drugie auto do ekipy, potrzebuje za 3-4 tygodnie, rozmawiał z Autoryzacją Fiata. Przygotowałeś ofertę: Transit Custom L1 2.0 EcoBlue 136KM, kolor biały, gwarancja 3 lata, dostawa 2 tygodnie. Twoja cena wywoławcza: 168 000 zł netto."},
+    clos:{model:"Transit Custom L1 2.0 EcoBlue 136KM",price:"168 000 zł - ustalona",demand:"Cena ustalona, ale klient mówi 'zadzwonię w przyszłym tygodniu i finalizujemy'. Wcześniej pytał o termin dostawy.",goal:"Zamknąć dziś. Wyciągnąć co blokuje. Zaproponować zaliczkę.",context:"",
+      brief:"Jesteś po pełnej rozmowie sprzedażowej. Uzgodniliście: Transit Custom L1, biały, 168 000 zł netto, dostawa 14 dni, gwarancja 3 lata. Klient pytał o termin rejestracji i czy możliwy odbiór w sobotę - sygnały gotowości. Zostało tylko domknięcie. Dziś koniec miesiąca - zależy Ci na zamknięciu."},
     prompt:`Jesteś właścicielem małej firmy budowlanej lub transportowej (kilku pracowników). Znasz rynek i rozmawiałeś z innymi dealerami. Masz realną alternatywę - Fiat Ducato za 142 000 zł. Jesteś bezpośredni, pewny siebie i wracasz do ceny. Ustępujesz tylko gdy dostajesz coś konkretnego w zamian. Twoja BATNA jest realna - możesz poczekać miesiąc. Odpowiadaj krótko (2-3 zdania), naturalnym językiem przedsiębiorcy. Nie ułatwiaj handlowcowi. Jeśli da Ci coś za darmo bez warunku - bierz i proś o więcej.`
   },
   {
     id:"p2",name:"Współwłaściciel",type:"B2B",difficulty:2,tag:"Niezdecydowany",
-    neg:{model:"Transit Custom L2 2.0 EcoBlue 170KM",price:"182 000 zł netto",demand:"Chce ofertę na piśmie. Musi pokazać wspólnikowi.",context:"Firma budowlana, kontrakt startuje za 6 tygodni. Wspólnik zajęty.",goal:"Wyciągnąć deadline. Osłabić BATNA przez czas dostawy. Doprowadzić do decyzji lub umówić ze wspólnikiem."},
-    clos:{model:"Transit Custom L2 2.0 EcoBlue 170KM",price:"182 000 zł - ustalona",demand:"Przy zamknięciu: 'Muszę zadzwonić do wspólnika - na pewno się zgodzi ale muszę go poinformować'. Wcześniej pytał o leasing.",goal:"Zdiagnozować czy wspólnik to realna blokada czy pretekst. Domknąć lub umówić wspólne spotkanie.",context:""},
+    neg:{model:"Transit Custom L2 2.0 EcoBlue 170KM",price:"182 000 zł netto",demand:"Chce ofertę na piśmie. Musi pokazać wspólnikowi.",context:"Firma budowlana, kontrakt startuje za 6 tygodni. Wspólnik zajęty.",goal:"Wyciągnąć deadline. Osłabić BATNA przez czas dostawy. Doprowadzić do decyzji lub umówić ze wspólnikiem.",
+      brief:"Jesteś po rozmowie telefonicznej i krótkim spotkaniu wstępnym. Wiesz że: firma budowlana, Tomasz jest jednym z dwóch wspólników, potrzebują Transita L2 na nowy kontrakt który startuje za 6 tygodni, drugi wspólnik Piotr nie uczestniczy w rozmowach. Przygotowałeś ofertę: Transit Custom L2 2.0 EcoBlue 170KM, biały, 182 000 zł netto, dostawa 3 tygodnie. Czas dostawy to Twój atut - u konkurencji 8 tygodni."},
+    clos:{model:"Transit Custom L2 2.0 EcoBlue 170KM",price:"182 000 zł - ustalona",demand:"Przy zamknięciu: 'Muszę zadzwonić do wspólnika - na pewno się zgodzi ale muszę go poinformować'. Wcześniej pytał o leasing.",goal:"Zdiagnozować czy wspólnik to realna blokada czy pretekst. Domknąć lub umówić wspólne spotkanie.",context:"",
+      brief:"Rozmawiacie już trzeci raz. Tomasz zaakceptował cenę 182 000 zł, dopytywał o leasing operacyjny (rata ok 3 200 zł/mies), pytał o FV na firmę. Dziś miał przyjść z decyzją. Wiesz że kontrakt budowlany startuje za 6 tygodni i bez auta nie mogą go realizować."},
     prompt:`Jesteś jednym z dwóch wspólników firmy usługowej. Drugi wspólnik nie przyszedł. Potrzebujecie auta na kontrakt za 6 tygodni. Jesteś pasywny i zbierasz informacje - unikasz zobowiązań. Chowasz się za wspólnikiem gdy czujesz presję. Twoja BATNA jest słaba - czas nagli ale o tym nie mówisz. Odpowiadaj krótko, niepewnie, z ostrożnością.`
   },
   {
     id:"p3",name:"Mąż (firma na żonę)",type:"B2B",difficulty:2,tag:"Wymówka żony",
-    neg:{model:"Transit Custom L1 Trail 2.0 EcoBlue 170KM",price:"195 000 zł netto",demand:"Mówi 'muszę powiedzieć żonie' za każdym razem gdy zbliżacie się do decyzji.",context:"Jednoosobowa działalność, faktycznie decyzje podejmuje sam.",goal:"Zidentyfikować że żona to wymówka. Wyciągnąć prawdziwą obiekcję. Zaproponować zaliczkę z możliwością rezygnacji.",context:""},
-    clos:{model:"Transit Custom L1 Trail 2.0 EcoBlue 170KM",price:"195 000 zł - ustalona",demand:"Cena uzgodniona, klient mówi 'żona musi to zaakceptować, zadzwonię jutro'. Wcześniej mówił że używa auta sam do pracy.",goal:"Zdemaskować że żona to pretekst. Wyciągnąć prawdziwą obiekcję. Zamknąć lub wziąć zaliczkę.",context:""},
+    neg:{model:"Transit Custom L1 Trail 2.0 EcoBlue 170KM",price:"195 000 zł netto",demand:"Mówi 'muszę powiedzieć żonie' za każdym razem gdy zbliżacie się do decyzji.",context:"Jednoosobowa działalność, faktycznie decyzje podejmuje sam.",goal:"Zidentyfikować że żona to wymówka. Wyciągnąć prawdziwą obiekcję. Zaproponować zaliczkę z możliwością rezygnacji.",
+      brief:"Jesteś po rozmowie rozpoznawczej. Wiesz że: Krzysztof, jednoosobowa działalność (hydraulik), działalność formalnie na żonę Annę, sam używa auta codziennie do pracy, oglądał Transit Custom Trail na OttoMoto. Przygotowałeś ofertę: Transit Custom L1 Trail 2.0 170KM, szary magnetyczny, 195 000 zł netto. Podejrzewasz że 'żona' to wymówka - decyduje sam."},
+    clos:{model:"Transit Custom L1 Trail 2.0 EcoBlue 170KM",price:"195 000 zł - ustalona",demand:"Cena uzgodniona, klient mówi 'żona musi to zaakceptować, zadzwonię jutro'. Wcześniej mówił że używa auta sam do pracy.",goal:"Zdemaskować że żona to pretekst. Wyciągnąć prawdziwą obiekcję. Zamknąć lub wziąć zaliczkę.",context:"",
+      brief:"Uzgodniliście wszystko: Trail szary, 195 000 zł, dostawa 3 tygodnie. Krzysztof przez całą rozmowę mówił w pierwszej osobie - 'wezmę', 'potrzebuję', 'mi pasuje'. Dopiero przy zamknięciu pojawia się żona. Twoje zadanie: nie wychodzić bez zaliczki lub jasnej daty decyzji."},
     prompt:`Jesteś właścicielem jednoosobowej działalności - hydraulik lub elektryk. Faktycznie decydujesz sam ale używasz 'żony' jako wymówki gdy nie chcesz podjąć decyzji. Twoja prawdziwa obiekcja to cena - uważasz że to za dużo ale nie mówisz tego wprost. Gdy handlowiec dobrnął do zamknięcia - powołujesz się na żonę. Jeśli handlowiec wprost zapyta czy to jest jedyna przeszkoda - przyznaj po chwili oporu że chodzi Ci o cenę.`
   },
   {
     id:"p4",name:"Pracownik od szefa",type:"B2B",difficulty:3,tag:"Bez mandatu",
-    neg:{model:"Transit L3H2 2.0 EcoBlue 130KM",price:"195 000 zł netto",demand:"Zbiera oferty dla szefa. Nie ma mandatu do negocjacji.",context:"Duża firma logistyczna, flota 15 pojazdów.",goal:"Dotrzeć do decydenta. Zaproponować bezpośrednie spotkanie z szefem. Nie dawać rabatów pracownikowi który nie ma mocy decyzji."},
-    clos:{model:"Transit L3H2 2.0 EcoBlue 130KM",price:"Do ustalenia z szefem",demand:"Pracownik mówi 'szef powiedział że jak będzie poniżej 185 000 to bierzemy trzy'. Szef nie jest dostępny.",goal:"Zweryfikować czy pracownik ma mandat. Zaproponować rozmowę z szefem. Nie składać oferty przez pośrednika bez gwarancji.",context:""},
+    neg:{model:"Transit L3H2 2.0 EcoBlue 130KM",price:"195 000 zł netto",demand:"Zbiera oferty dla szefa. Nie ma mandatu do negocjacji.",context:"Duża firma logistyczna, flota 15 pojazdów.",goal:"Dotrzeć do decydenta. Zaproponować bezpośrednie spotkanie z szefem. Nie dawać rabatów pracownikowi który nie ma mocy decyzji.",
+      brief:"Wiesz tyle co powiedział przez telefon: firma logistyczna z Płocka, potrzebują do 3 sztuk Transit L3H2, Michał jest asystentem zarządu, szef Krzysztof Nowak decyduje o zakupach flotowych, flotę mają ok 15 pojazdów. Przygotowałeś ofertę na 3 sztuki: Transit L3H2 2.0 130KM, biały, 195 000 zł/szt netto, możliwy rabat flotowy przy zamówieniu 3 szt - ale tylko w rozmowie z decydentem."},
+    clos:{model:"Transit L3H2 2.0 EcoBlue 130KM",price:"Do ustalenia z szefem",demand:"Pracownik mówi 'szef powiedział że jak będzie poniżej 185 000 to bierzemy trzy'. Szef nie jest dostępny.",goal:"Zweryfikować czy pracownik ma mandat. Zaproponować rozmowę z szefem. Nie składać oferty przez pośrednika bez gwarancji.",context:"",
+      brief:"Michał wrócił drugi raz - tym razem mówi że rozmawiał z szefem i ma konkretne wytyczne cenowe. Twoje wyzwanie: sprawdzić czy to realne umocowanie czy kolejne pośrednictwo. Nie dawaj ceny finalnej przez pośrednika - ryzyko że szef użyje jej jako punktu startowego do kolejnej rundy."},
     prompt:`Jesteś pracownikiem administracyjnym dużej firmy logistycznej. Szef wysłał Cię po oferty na 3 Transity. Nie masz mandatu do negocjacji - możesz tylko zbierać ceny i przekazywać szefowi. Jesteś miły ale bezradny. Gdy handlowiec pyta o decyzję - mówisz 'ja tylko zbieram oferty'. Znasz cenę którą szef zaakceptuje ale mówisz ją tylko jeśli handlowiec bezpośrednio pyta.`
   },
   {
     id:"p5",name:"Malzenstwo",type:"B2C",difficulty:3,tag:"Wspolna decyzja",
-    neg:{model:"Kuga PHEV 2.5 Duratec 225KM",price:"189 900 zł",demand:"Mąż chce rabatu, żona pyta o raty.",context:"Oboje na miejscu. Mąż bardziej aktywny, żona bardziej ostrożna finansowo.",goal:"Przekonać oboje - mąż chce cenę poniżej 180k, żona chce ratę poniżej 2 000 zł/mies."},
-    clos:{model:"Kuga PHEV 2.5 Duratec 225KM",price:"184 000 zł - ustalona",demand:"Mąż jest gotowy, żona hamuje: 'to dużo pieniędzy na raz, może poczekajmy'.",goal:"Zidentyfikować obiekcję żony (budżet vs wartość). Zaproponować leasing. Zamknąć z decyzją obojga.",context:""},
+    neg:{model:"Kuga PHEV 2.5 Duratec 225KM",price:"189 900 zł",demand:"Mąż chce rabatu, żona pyta o raty.",context:"Oboje na miejscu. Mąż bardziej aktywny, żona bardziej ostrożna finansowo.",goal:"Przekonać oboje - mąż chce cenę poniżej 180k, żona chce ratę poniżej 2 000 zł/mies.",
+      brief:"Przyszli razem na jazdę próbną. Wiesz że: Piotr i Agnieszka, szukają auta rodzinnego, mają dwójkę dzieci, Piotr dojeżdża 40km do pracy (PHEV idealny), Agnieszka zarządza domowym budżetem. Siedzieli w Kudze 20 minut - oboje się uśmiechali. Przygotowałeś ofertę: Kuga PHEV ST-Line 225KM, szary lunar, 189 900 zł, rata leasingu konsumenckiego 36 mies / 10% wpłata własna: ok 2 350 zł/mies."},
+    clos:{model:"Kuga PHEV 2.5 Duratec 225KM",price:"184 000 zł - ustalona",demand:"Mąż jest gotowy, żona hamuje: 'to dużo pieniędzy na raz, może poczekajmy'.",goal:"Zidentyfikować obiekcję żony (budżet vs wartość). Zaproponować leasing. Zamknąć z decyzją obojga.",context:"",
+      brief:"Rozmawiacie drugi raz - Piotr wrócił z Agnieszką po tygodniu przemyśleń. Uzgodniliście cenę 184 000 zł. Piotr jest zdecydowany. Przygotowałeś wyliczenie leasingu: 184 000 zł, 36 mies, 20% wpłata własna = rata 1 980 zł/mies - poniżej psychologicznej granicy 2 000 zł Agnieszki."},
     prompt:`Grasz dwie role naraz - małżeństwo. Mąż (aktywny, decyzyjny) chce rabatu i szybko zamknąć. Żona (ostrożna, finansowa) pyta o raty i zastanawia się czy to dobra decyzja. Gdy handlowiec mówi do jednego z Was - odpowiadaj z jego perspektywy. Małżeństwo potrzebuje żeby obie osoby były przekonane. Jeśli handlowiec zaniedbuje żonę - ona hamuje decyzję.`
   },
   {
     id:"p6",name:"Ekspert z zona (Puma)",type:"B2C",difficulty:2,tag:"Podwojny glos",
-    neg:{model:"Puma ST-Line X 1.0 EcoBoost 125KM automat",price:"119 900 zł",demand:"Mąż chce zejść do 109 000 zł. Żona jest niepewna co do koloru - chciałaby czerwony ale jest tylko niebieski.",goal:"Obronić cenę. Zaangażować żonę w decyzję. Zaproponować zamówienie na kolor."},
-    clos:{model:"Puma ST-Line X 1.0 EcoBoost 125KM automat",price:"115 000 zł - ustalona",demand:"Mąż jest zdecydowany na ten model. Żona mówi że musi przemyśleć - chodzi jej o kolor niebieski zamiast czerwonego.",goal:"Rozwiać wątpliwości żony co do koloru. Pokazać opcję zamówienia. Zamknąć z zaliczką.",context:""},
+    neg:{model:"Puma ST-Line X 1.0 EcoBoost 125KM automat",price:"119 900 zł",demand:"Mąż chce zejść do 109 000 zł. Żona jest niepewna co do koloru - chciałaby czerwony ale jest tylko niebieski.",goal:"Obronić cenę. Zaangażować żonę w decyzję. Zaproponować zamówienie na kolor.",
+      brief:"Przyszli razem, oglądali Pumę przez pół godziny. Wiesz że: Marcin pracuje w branży motoryzacyjnej (zna się na autach), Kasia chciała czerwonego - masz tylko niebieski Frozen White i Solar Silver w stocku. Czerwony możliwy w zamówieniu - 6 tygodni. Przygotowałeś ofertę: Puma ST-Line X automat, niebieski Frozen White, 119 900 zł. Marcin testował już model u innego dealera."},
+    clos:{model:"Puma ST-Line X 1.0 EcoBoost 125KM automat",price:"115 000 zł - ustalona",demand:"Mąż jest zdecydowany na ten model. Żona mówi że musi przemyśleć - chodzi jej o kolor niebieski zamiast czerwonego.",goal:"Rozwiać wątpliwości żony co do koloru. Pokazać opcję zamówienia. Zamknąć z zaliczką.",context:"",
+      brief:"Drugie spotkanie. Zbiliście cenę do 115 000 zł. Marcin jest w 100% zdecydowany - mówi wprost że bierze. Kasia siedziała w aucie 15 minut, robiła zdjęcia wnętrza - ale wróciła do kwestii koloru. Masz ofertę zamówienia czerwonego - czas dostawy 6 tygodni, bez dopłaty do koloru."},
     prompt:`Jesteś mężem - dobrze znasz się na autach i testowałeś kilka modeli. Żona jest z Tobą i ma głos przy decyzji - głównie liczy się dla niej wygląd i kolor. Mąż negocjuje cenę, żona komentuje estetykę. Jeśli handlowiec zaangażuje żonę i rozwiąże kwestię koloru - mąż odpuszcza część negocjacji cenowej.`
   },
   {
     id:"p7",name:"Zona budzietowa",type:"B2C",difficulty:3,tag:"Zona ma weto",
-    neg:{model:"Ranger Wildtrak 4x4 2.0 EcoBlue 170KM",price:"249 900 zł",demand:"Mąż jest gotowy kupić. Żona mówi 'to za dużo, nie potrzebujemy tak drogiego auta'.",goal:"Rozwiać wątpliwości żony. Zrozumieć jej obiekcję (budżet vs potrzeba). Zaproponować tańszą wersję lub leasing."},
-    clos:{model:"Ranger Wildtrak 4x4 2.0 EcoBlue 170KM",price:"240 000 zł - ustalona z mężem",demand:"Mąż zamknięty, żona wciąż oporna: 'na pewno to jest mądra decyzja?'",goal:"Adresować obiekcję żony. Dać jej racjonalne uzasadnienie decyzji. Zamknąć z obojgiem.",context:""},
+    neg:{model:"Ranger Wildtrak 4x4 2.0 EcoBlue 170KM",price:"249 900 zł",demand:"Mąż jest gotowy kupić. Żona mówi 'to za dużo, nie potrzebujemy tak drogiego auta'.",goal:"Rozwiać wątpliwości żony. Zrozumieć jej obiekcję (budżet vs potrzeba). Zaproponować tańszą wersję lub leasing.",
+      brief:"Przyszli razem - Robert od razu szedł do Rangera, Monika była sceptyczna już na progu. Wiesz że: Robert prowadzi działalność budowlaną, jeździ teraz na Hiluxie 2018, Monika jest księgową i zarządza finansami firmy. Przygotowałeś ofertę: Ranger Wildtrak 4x4 170KM, Absolute Black, 249 900 zł. Masz też Rangera XL za 189 900 - ale nie wyciągaj go za wcześnie."},
+    clos:{model:"Ranger Wildtrak 4x4 2.0 EcoBlue 170KM",price:"240 000 zł - ustalona z mężem",demand:"Mąż zamknięty, żona wciąż oporna: 'na pewno to jest mądra decyzja?'",goal:"Adresować obiekcję żony. Dać jej racjonalne uzasadnienie decyzji. Zamknąć z obojgiem.",context:"",
+      brief:"Rozmawiacie drugi raz. Z Robertem uzgodniłeś 240 000 zł - jest zadowolony, chce zamknąć dziś. Monika przyjechała z nim ponownie - to dobry znak, rozważa zakup. Jej pytanie 'czy to mądra decyzja' to prośba o racjonalne uzasadnienie, nie odmowa. Masz argument: Ranger jako środek trwały w firmie, pełny VAT, amortyzacja."},
     prompt:`Grasz dwie role. Mąż jest entuzjastą - chce Rangera, już zdecydowany. Żona jest praktyczna i patrzy na budżet - obawia się że to zbędny wydatek i woli coś tańszego. Żona szanuje opinie ekspertów - jeśli handlowiec da jej solidne uzasadnienie dlaczego ten wybór jest mądry finansowo - ustępuje. Jeśli handlowiec ignoruje jej obawy - blokuje decyzję.`
   },
   {
     id:"p8",name:"Flotowiec",type:"B2B",difficulty:5,tag:"Profesjonalny negocjator",
-    neg:{model:"Transit Custom L1 x3 sztuki",price:"168 000 zł/szt netto",demand:"Mówi że ma oferty po 156 000 zł od 2 dealerów. Chce 154 000 zł/szt.",context:"Firma logistyczna, flota 30 pojazdów. Kupuje regularnie co 3 lata.",goal:"Zbadać czy 156k to blef. Nie schodzić poniżej 160k bez pakietu serwisowego. Zaoferować warunki serwisowe zamiast czystego rabatu."},
-    clos:{model:"Transit Custom L1 x3 sztuki",price:"162 000 zł/szt - po negocjacjach",demand:"Flotowiec mówi 'mam u Was warunki ale kolega mówi że Autoplaza daje taniej. Muszę to sprawdzić.'",goal:"Utrzymać klienta. Zbadać czy Autoplaza to blef. Pokazać wartość relacji i serwisu. Zamknąć przed wyjściem.",context:""},
+    neg:{model:"Transit Custom L1 x3 sztuki",price:"168 000 zł/szt netto",demand:"Mówi że ma oferty po 156 000 zł od 2 dealerów. Chce 154 000 zł/szt.",context:"Firma logistyczna, flota 30 pojazdów. Kupuje regularnie co 3 lata.",goal:"Zbadać czy 156k to blef. Nie schodzić poniżej 160k bez pakietu serwisowego. Zaoferować warunki serwisowe zamiast czystego rabatu.",
+      brief:"Marek Kowalski dzwonił wcześniej i powiedział tyle: firma logistyczna ok 30 pojazdów, kupują regularnie co 3 lata, teraz potrzebują 3 Custom L1, mają oferty z rynku. Przygotowałeś ofertę: 3x Transit Custom L1 2.0 136KM, biały, 168 000 zł/szt netto + pakiet serwisowy Premium 3 lata (wartość 8 400 zł/szt) - koszt pakietu dla Ciebie ok 4 200 zł. Twoja twarda granica: 160 000 zł bez pakietu = 164 200 zł z pakietem."},
+    clos:{model:"Transit Custom L1 x3 sztuki",price:"162 000 zł/szt - po negocjacjach",demand:"Flotowiec mówi 'mam u Was warunki ale kolega mówi że Autoplaza daje taniej. Muszę to sprawdzić.'",goal:"Utrzymać klienta. Zbadać czy Autoplaza to blef. Pokazać wartość relacji i serwisu. Zamknąć przed wyjściem.",context:"",
+      brief:"Wynegocjowaliście 162 000 zł/szt z pakietem serwisowym Premium. Marek powiedział 'wrócę jutro z decyzją'. Jutro na początku rozmowy pojawia się nowy argument - Autoplaza. Wiesz że Autoplaza nie jest ASO Ford - serwis poza siecią autoryzowaną. Macie z Markiem historię - kupował u Ciebie poprzednią partię 2 lata temu, dostawa wtedy 10 dni."},
     prompt:`Jesteś doświadczonym specjalistą ds. floty w dużej firmie logistycznej. Kupujesz auta regularnie od 10 lat. Znasz wszystkie techniki handlowców i stosujesz własne. Masz realne oferty alternatywne (lub udajesz że masz). Nigdy nie akceptujesz pierwszej ceny. Testujesz granice handlowca systematycznie. Szanujesz handlowców którzy znają produkt i nie łamią się przy pierwszym nacisku. Odpowiadaj profesjonalnie, sucho, bez emocji.`
   }
 ];
@@ -317,7 +333,12 @@ function TypingDots() {
 /* ═══════════════════════════════ SCREENS ═══════════════════════════════ */
 
 function LoginScreen({ onLogin }) {
-  const [name, setName] = useState("");
+  const saved = (() => { try { return localStorage.getItem("budmat_user") || ""; } catch { return ""; } })();
+  const [name, setName] = useState(saved);
+  const handleLogin = (n) => {
+    try { localStorage.setItem("budmat_user", n); } catch {}
+    onLogin(n);
+  };
   return (
     <div className="screen fade-in" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "80vh", gap: 32 }}>
       <div style={{ textAlign: "center" }}>
@@ -332,10 +353,10 @@ function LoginScreen({ onLogin }) {
           placeholder="np. Andrzej"
           value={name}
           onChange={e => setName(e.target.value)}
-          onKeyDown={e => e.key === "Enter" && name.trim() && onLogin(name.trim())}
+          onKeyDown={e => e.key === "Enter" && name.trim() && handleLogin(name.trim())}
           autoFocus
         />
-        <Btn onClick={() => name.trim() && onLogin(name.trim())} disabled={!name.trim()} style={{ width: "100%", marginTop: 12, height: 48 }}>
+        <Btn onClick={() => name.trim() && handleLogin(name.trim())} disabled={!name.trim()} style={{ width: "100%", marginTop: 12, height: 48 }}>
           Zaloguj sie
         </Btn>
       </div>
@@ -357,7 +378,7 @@ function HomeScreen({ userName, onModule, onManager }) {
       </div>
       <div className="label" style={{ marginBottom: 12 }}>Wybierz modul</div>
       <div style={{ display: "grid", gap: 12, marginBottom: 24 }}>
-        <div className="module-card module-neg" onClick={() => onModule("negocjacje")}>
+        <div className="module-card module-neg">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", color: "#4A7BE5", textTransform: "uppercase", marginBottom: 6 }}>Modul 1</div>
@@ -372,7 +393,7 @@ function HomeScreen({ userName, onModule, onManager }) {
             <Btn onClick={e => { e.stopPropagation(); onModule("negocjacje", "symulacja"); }} size="sm">Symulacja</Btn>
           </div>
         </div>
-        <div className="module-card module-clos" onClick={() => onModule("zamykanie")}>
+        <div className="module-card module-clos">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", color: "#C8973A", textTransform: "uppercase", marginBottom: 6 }}>Modul 2</div>
@@ -474,6 +495,60 @@ function SimModuleSelect({ onSelect, onBack }) {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+
+function BriefingScreen({ module, persona, scenario, onStart, onBack }) {
+  const color = module === "negocjacje" ? "#4A7BE5" : "#C8973A";
+  const brief = scenario.brief || "";
+
+  return (
+    <div className="screen fade-in">
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+        <button onClick={onBack} style={{ background: "transparent", border: "none", color: "#7A82A0", cursor: "pointer", fontSize: 18, padding: "4px 8px" }}>←</button>
+        <div>
+          <div className="label" style={{ color }}>BRIEF PRZED SYMULACJA</div>
+          <h2 className="display" style={{ fontSize: 18 }}>{persona.name}</h2>
+        </div>
+      </div>
+
+      <div className="card" style={{ marginBottom: 12, borderColor: color }}>
+        <div className="label" style={{ marginBottom: 10, color }}>Kontekst rozmowy</div>
+        <p style={{ fontSize: 14, lineHeight: 1.75, color: "#C8CCDC" }}>{brief}</p>
+      </div>
+
+      <div className="card" style={{ marginBottom: 12, background: "#0F1220" }}>
+        <div className="label" style={{ marginBottom: 10 }}>Twoja oferta</div>
+        <div style={{ display: "grid", gap: 8 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid #1E2438" }}>
+            <span style={{ fontSize: 13, color: "#7A82A0" }}>Model</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#E2E5F0", textAlign: "right", maxWidth: "60%" }}>{scenario.model}</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid #1E2438" }}>
+            <span style={{ fontSize: 13, color: "#7A82A0" }}>Cena wywoławcza</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color, textAlign: "right" }}>{scenario.price}</span>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "8px 0" }}>
+            <span style={{ fontSize: 13, color: "#7A82A0" }}>Twoj cel</span>
+            <span style={{ fontSize: 13, color: "#E2E5F0", textAlign: "right", maxWidth: "60%" }}>{scenario.goal}</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ background: "#1C130A", border: "1px solid #3A2810", borderRadius: 10, padding: "12px 16px", marginBottom: 20 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: "#C8973A", marginBottom: 4 }}>PAMIETAJ</div>
+        <p style={{ fontSize: 13, color: "#C8A870", lineHeight: 1.6 }}>
+          {module === "negocjacje"
+            ? "Jestes juz po badaniu potrzeb. Nie powtarzaj rozpoznania od zera. Zacznij od prezentacji oferty i obrony ceny."
+            : "Jestes juz po ustaleniu ceny i warunkow. Skup sie na zamknieciu - rozpoznaj sygnaly gotowosci i zapytaj o decyzje."}
+        </p>
+      </div>
+
+      <Btn onClick={onStart} style={{ width: "100%", height: 52 }}>
+        Rozpocznij symulacje →
+      </Btn>
     </div>
   );
 }
@@ -717,10 +792,14 @@ function FeedbackScreen({ module, persona, scenario, transcript, messages, userN
 }
 
 function ManagerScreen({ onBack }) {
+  const [auth, setAuth] = useState(false);
+  const [authInput, setAuthInput] = useState("");
+  const [authError, setAuthError] = useState(false);
   const [tab, setTab] = useState("logs");
   const [logs, setLogs] = useState([]);
   const [personas, setPersonas] = useState([]);
   const [expandedLog, setExpandedLog] = useState(null);
+  const [expandedTranscript, setExpandedTranscript] = useState(null);
   const [addMode, setAddMode] = useState(null);
   const [newPersona, setNewPersona] = useState({ name: "", type: "B2B", difficulty: 3, tag: "", prompt: "", negModel: "", negPrice: "", negDemand: "", negGoal: "", closModel: "", closDemand: "", closGoal: "" });
   const [aiDesc, setAiDesc] = useState("");
@@ -728,9 +807,31 @@ function ManagerScreen({ onBack }) {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    db.getLogs().then(l => setLogs(l || []));
-    db.getPersonas().then(p => setPersonas(p && p.length > 0 ? p : PERSONAS_DEFAULT));
-  }, []);
+    if (auth) {
+      db.getLogs().then(l => setLogs(l || []));
+      db.getPersonas().then(p => setPersonas(p && p.length > 0 ? p : PERSONAS_DEFAULT));
+    }
+  }, [auth]);
+
+  if (!auth) return (
+    <div className="screen fade-in" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "60vh", gap: 20 }}>
+      <div style={{ textAlign: "center", marginBottom: 8 }}>
+        <div style={{ fontSize: 28, marginBottom: 8 }}>🔒</div>
+        <h2 className="display" style={{ fontSize: 22, marginBottom: 4 }}>Widok Managera</h2>
+        <p style={{ color: "#7A82A0", fontSize: 13 }}>Podaj haslo aby kontynuowac</p>
+      </div>
+      <div style={{ width: "100%", maxWidth: 300 }}>
+        <input className="input" type="password" placeholder="Haslo" value={authInput}
+          onChange={e => { setAuthInput(e.target.value); setAuthError(false); }}
+          onKeyDown={e => { if (e.key === "Enter") { if (authInput === "Gujas1992!") setAuth(true); else setAuthError(true); } }}
+          autoFocus
+        />
+        {authError && <p style={{ color: "#E05555", fontSize: 12, marginTop: 6 }}>Nieprawidlowe haslo</p>}
+        <Btn onClick={() => { if (authInput === "Gujas1992!") setAuth(true); else setAuthError(true); }} style={{ width: "100%", marginTop: 12 }}>Wejdz</Btn>
+        <Btn onClick={onBack} variant="ghost" style={{ width: "100%", marginTop: 8 }}>Wróc</Btn>
+      </div>
+    </div>
+  );
 
   const savePersona = async (p) => {
     setSaving(true);
@@ -811,10 +912,17 @@ function ManagerScreen({ onBack }) {
                       </div>
                     )}
                     {log.transcript && (
-                      <details style={{ marginTop: 10 }}>
-                        <summary style={{ fontSize: 12, color: "#7A82A0", cursor: "pointer" }}>Pelny transcript</summary>
-                        <pre style={{ fontSize: 11, color: "#7A82A0", marginTop: 8, whiteSpace: "pre-wrap", lineHeight: 1.5 }}>{log.transcript}</pre>
-                      </details>
+                      <div style={{ marginTop: 8 }}>
+                        <button onClick={e => { e.stopPropagation(); setExpandedTranscript(expandedTranscript === i ? null : i); }}
+                          style={{ background: "transparent", border: "1px solid #1E2438", borderRadius: 6, padding: "6px 12px", color: "#7A82A0", fontSize: 12, cursor: "pointer", fontFamily: "inherit", width: "100%" }}>
+                          {expandedTranscript === i ? "Ukryj transcript" : "Pokaz transcript"}
+                        </button>
+                        {expandedTranscript === i && (
+                          <div style={{ marginTop: 8, background: "#0B0E19", borderRadius: 6, padding: "12px", maxHeight: 300, overflowY: "auto" }}>
+                            <pre style={{ fontSize: 11, color: "#7A82A0", whiteSpace: "pre-wrap", lineHeight: 1.6 }}>{log.transcript}</pre>
+                          </div>
+                        )}
+                      </div>
                     )}
                   </div>
                 )}
@@ -951,7 +1059,7 @@ export default function App() {
     setModule(mod);
     setPersona(picked);
     setScenario(sc);
-    setScreen("simulation");
+    setScreen("briefing");
   };
 
   const handleModuleSelect = (mod, mode) => {
@@ -972,6 +1080,12 @@ export default function App() {
       {screen === "home" && <HomeScreen userName={userName} onModule={handleModuleSelect} onManager={() => setScreen("manager")} />}
       {screen === "theory" && <TheoryScreen module={module} onBack={() => setScreen("home")} />}
       {screen === "simmodule" && <SimModuleSelect onSelect={mod => startSim(mod)} onBack={() => setScreen("home")} />}
+      {screen === "briefing" && persona && scenario && (
+        <BriefingScreen module={module} persona={persona} scenario={scenario}
+          onStart={() => setScreen("simulation")}
+          onBack={() => setScreen("home")}
+        />
+      )}
       {screen === "simulation" && persona && scenario && (
         <SimulationScreen userName={userName} module={module} persona={persona} scenario={scenario} onEnd={handleSimEnd} />
       )}
